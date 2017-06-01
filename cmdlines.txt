@@ -1,0 +1,14 @@
+pip3 install --upgrade tensorflow-gpu
+pip3 install --upgrade tensorflow
+
+pip install tensorflow --upgrade #for Amazon Cloud
+
+# git clone https://github.com/affinelayer/pix2pix-tensorflow.git
+git clone https://github.com/pt990platina/pix2pix-tensorflow.git
+
+cd pix2pix-tensorflow
+
+# python tools/download-dataset.py facades
+
+python pix2pix.py --mode train --output_dir facades_train --max_epochs 200 --input_dir facades/train --which_direction BtoA
+python pix2pix.py --mode test --output_dir facades_test --input_dir facades/val --checkpoint facades_train
